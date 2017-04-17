@@ -1,0 +1,46 @@
+<#
+.SYNOPSIS
+    Gets the certificate used to connect to ComputerName on Port
+.DESCRIPTION
+    Original concept from Yoav Barzilay (@y0avb / https://y0av.me), made pretty and modular
+.EXAMPLE
+    Get-TCPStreamCertificate -ComputerName 'Pool1-FE3.mandie.net' -Port 443
+.EXAMPLE
+    
+    Gets the internal certificate for all of your Skype/Lync Edge Servers
+#>
+function Get-CRCertificate {
+    [CmdletBinding()]
+    [OutputType([int])]
+    param(
+        [Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true,
+                   Position=0)]
+        [string]
+        $ComputerName
+        ,[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true,
+                   Position=1)]
+        [int]
+        $Port = 443
+        ,[Parameter(Mandatory=$false,ValueFromPipelineByPropertyName=$true,
+                    Position=2)]
+        $ComponentType = 'Web Server'
+    )
+    
+    process {
+        $tcpsocket = New-Object Net.Sockets.TcpClient($computerName, $port) 
+        #Socket Got connected get the tcp stream ready to read the certificate
+        $tcpstream = $tcpsocket.GetStream()
+        #Create an SSL Connection 
+        $sslStream = New-Object System.Net.Security.SslStream($tcpstream,$false)
+        #Force the SSL Connection to send the certificate
+        $sslStream.AuthenticateAsClient($computerName) 
+
+        #Read the certificate
+        $certData = New-Object system.security.cryptography.x509certificates.x509certificate2($sslStream.RemoteCertificate)
+        $CRCertificate = [CRCertificate]::New($ComputerName,$Port,$certData,$ComponentType)
+        return $CRCertificate
+    }
+    
+    end {
+    }
+}

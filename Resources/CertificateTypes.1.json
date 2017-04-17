@@ -1,0 +1,81 @@
+{
+    "Skype":
+    {
+        "SBA":
+        [
+            {
+            "Port":5061
+            ,"ComponentType":"SBA SIP"
+            }
+            ,{
+            "Port":5067
+            ,"ComponentType":"SBA Mediation"
+            }
+        ]
+        
+        ,"FrontEndServer":
+        [
+            {
+            "Port":5061
+            ,"ComponentType":"FrontEnd SIP"
+            }
+            ,{
+            "Port":5067
+            ,"ComponentType":"FrontEnd Mediation"
+            }
+            ,{
+            "Port":443
+            ,"ComponentType":"FrontEnd Internal Web"
+            }
+            ,{
+            "Port":4443
+            ,"ComponentType":"FrontEnd External Web"
+            }                    
+        ]
+        
+        ,"DirectorServer":
+        [
+            {
+            "Port":5061
+            ,"ComponentType":"Director SIP"
+            }
+            ,{
+            "Port":443
+            ,"ComponentType":"Director Internal Web"
+            }
+            ,{
+            "Port":4443
+            ,"ComponentType":"Director External Web"
+            }                    
+        ]
+    
+        ,"MediationServer":
+        [
+            {
+            "Port":5067
+            ,"ComponentType":"Mediation"
+            }                 
+        ]
+    
+        ,"EdgeServer":
+        [
+            {
+            "Port":443
+            ,"ComponentType":"Edge A/V"
+            }                 
+        ]
+    
+        ,"PSTNGateway":
+        [
+            {
+            "Port":5067
+            ,"ComponentType":"PSTN Gateway Media"
+            }
+            ,{
+            "Port":443
+            ,"ComponentType":"PSTN Gateway Web"
+            }              
+        ]
+        
+    }
+}

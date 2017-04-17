@@ -1,0 +1,30 @@
+td {
+    font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 11px;
+    border-top: 1px solid #1E90FF;
+    border-right: 1px solid #1E90FF;
+    border-bottom: 1px solid #1E90FF;
+    border-left: 1px solid #1E90FF;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+th {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    background: #009999;
+}
+body {
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+}
+table {
+    border: thin solid #000000;
+    background: #FFFFFF;  
+}
+alert {
+    background: red
+}
