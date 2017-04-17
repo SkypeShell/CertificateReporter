@@ -21,7 +21,7 @@ function Get-CRCertificate {
         [string]$ComputerName
         , [Parameter(Mandatory=$true,ValueFromPipeline=$true,Position=1)]
         [int]$Port
-        , [Parameter(Mandatory=$true,ValueFromPipeline=$true,Position=2)]
+        , [Parameter(Mandatory=$false,ValueFromPipeline=$true,Position=2)]
         [String]$ComponentType="Web Server"
     )
     
